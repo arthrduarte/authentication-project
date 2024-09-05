@@ -19,12 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  secret: 'key that will sign the cookie', // takes a string key that will sign the cookie to the browser
-  resave: false, // 'resave: true' = for every request, we want to create a new session (even if it's the same user/browser)
-  saveUninitialized: false, // 'saveUnitialized: true' = if we have not modified the session, we don't want to save
-  
-}))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

@@ -3,10 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  req.session.isAuth = true
-  console.log(req.session)
-  console.log(req.session.id)
-  res.send("Hello Session")
+  res.render('index')
 });
+
+router.get('/login', (req, res, next) => {
+  res.render('login')
+})
 
 module.exports = router;
