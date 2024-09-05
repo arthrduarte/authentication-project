@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel')
+const { bypassLogin } = require('../middlewares')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', bypassLogin, function (req, res, next) {
     res.send("Login page");
 });
 
