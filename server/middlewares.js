@@ -1,19 +1,15 @@
-exports.checkLoggedIn = (req, res, next) => {
+exports.isAuthenticated = (req, res, next) => {
     if (req.session.user) {
-        console.log("User is logged in and accessed home page")
-        next()
+        return next();  // User is authenticated, proceed to the next handler
     } else {
-        console.log("User is not logged in and tried to access home page. Redirecting to login...")
-        res.redirect('/login')
+        return res.status(401).json({ message: 'You must log in' });
     }
 }
 
-exports.bypassLogin = (req, res, next) => {
+exports.isNotAuthenticated = (req, res, next) => {
     if (!req.session.user) {
-        console.log("User is not logged in and accessed login page")
-        next()
+        return next();  // User is not authenticated, proceed to the next handler
     } else {
-        console.log("User is logged in and tried to access login page. Redirecting to home...")
-        res.redirect('/')
+        return res.status(401).json({ message: 'You are logged in' });
     }
 }
