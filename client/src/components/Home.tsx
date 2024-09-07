@@ -7,6 +7,7 @@ export default function Home() {
             <div className='text-center space-x-5'>
                 <a href="login">Login</a>
                 <a href="register">Register</a>
+                <a href="logout">Logout</a>
             </div>
         </>)
 }
