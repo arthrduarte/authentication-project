@@ -1,11 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { isAuthenticated } = require('../middlewares')
 
-router.get('/', isAuthenticated, (req, res) => {
-    req.session.destroy()
-    res.clearCookie('session')
-    res.status(200).json({ message: 'Logout successful' });
+router.post('/', (req, res) => {
+    console.log('Logout route hit');
+    if (req.session.user) {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Failed to log out' });
+            }
+            console.log('Session destroyed and cookies cleared');
+            res.clearCookie('session');  // Clear the session cookie
+            return res.status(200).json({ message: 'Logout successful' });
+        });
+    } else {
+        res.status(404).json({ message: 'You are not logged in' })
+    }
 })
 
 module.exports = router
