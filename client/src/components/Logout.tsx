@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Logout() {
+    const [result, setResult] = useState('Logging out...')
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -13,10 +14,11 @@ export default function Logout() {
             const result = await response.json();
             if (response.ok) {
                 console.log(result.message);
-                // Redirect to home or login page
-                navigate('/'); // Use the navigate function instead of useNavigate
+                setResult('You were logged out succesfully')
+                navigate('/');
             } else {
                 console.error(result.message);
+                setResult(result.message)
             }
         } catch (error) {
             console.error('An error occurred during logout:', error);
@@ -30,7 +32,7 @@ export default function Logout() {
     return (
         <>
             <a href="/">Go back</a>
-            <h1 className='text-center font-bold text-[2rem]'>Log out</h1>
+            <h1 className='text-center font-bold text-[2rem]'>{result}</h1>
         </>
     );
 }
