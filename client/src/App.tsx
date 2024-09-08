@@ -4,6 +4,7 @@ import Login from "./components/Login"
 import Register from "./components/Register"
 import Home from "./components/Home"
 import Logout from "./components/Logout"
+import Dashboard from "./components/Dashboard"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="logout" element={<Logout />} />
+            <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

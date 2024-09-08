@@ -8,6 +8,8 @@ export default function Home() {
                 <a href="login">Login</a>
                 <a href="register">Register</a>
                 <a href="logout">Logout</a>
+                <a href="dashboard">Dashboard</a>
             </div>
-        </>)
+        </>
+    )
 }
