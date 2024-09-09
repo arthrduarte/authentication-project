@@ -1,28 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function Home() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
+    const userData = localStorage.getItem("user")
 
-    const checkLogin = async () => {
-        const response = await fetch('http://localhost:3000/dashboard', {
-            method: 'GET',
-            credentials: 'include'
-        });
-
-        if (response.ok) {
-            setIsAuthenticated(true)
-        } else {
-            setIsAuthenticated(false)
-        }
-        setIsLoading(false)
-    }
-
-    React.useEffect(() => {
-        checkLogin();
-    }, []);
-    
-    if(isAuthenticated){
+    if(userData){
         return (
             <>
                 <h1 className='text-center font-bold text-[2rem]'>Home</h1>

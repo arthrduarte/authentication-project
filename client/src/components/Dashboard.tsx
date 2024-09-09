@@ -1,37 +1,8 @@
-import React, { useState } from 'react'
-
-interface User {
-  id: object,
-  email: string,
-  username: string
-}
-
-interface DashboardData {
-  user: User
-}
+import React from 'react'
 
 export default function Dashboard() {
-  const [data, setData] = useState<DashboardData | null>(null)
-
-
-  const fetchDashboard = async () => {
-    const response = await fetch('http://localhost:3000/dashboard', {
-      method: 'GET',
-      credentials: 'include'
-    });
-
-    const jsonData = await response.json()
-    if (response.ok) {
-      setData(jsonData)
-      console.log('Dashboard', jsonData)
-    } else {
-      console.error('Failed to fetch dashboard')
-    }
-  }
-
-  React.useEffect(() => {
-    fetchDashboard();
-  }, []);
+  const userData = JSON.parse(localStorage.getItem("user") ?? '')
+  console.log(userData)
 
   return (
     <>
@@ -41,8 +12,8 @@ export default function Dashboard() {
         <a href="logout">Logout</a>
       </div>
       <div>
-        <p>{data?.user.email}</p>
-        <p>{data?.user.username}</p>
+        <p>{userData.username}</p>
+        <p>{userData.email}</p>
       </div>
     </>
   )
