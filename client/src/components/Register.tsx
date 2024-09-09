@@ -30,25 +30,24 @@ export default function Register() {
     }
 
     return (
-        <div>
-
-            <a href="/">Go back</a>
-            <h1 className='text-center font-bold text-[2rem]'>Register</h1>
-            <p className='text-center font-bold text-[1rem]'>{errorMessage}</p>
-            <form onSubmit={handleSubmit}>
+        <div className='flex flex-col items-center rounded-lg bg-white shadow-2xl py-[3rem] px-[5rem]'>
+            <a href="/" className='block text-blue-500 hover:text-blue-700'>Go back</a>
+            <h1 className='text-center font-bold text-2xl'>Register</h1>
+            <p className='text-center text-base my-3'>{errorMessage}</p>
+            <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-xs">
                 <div>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <label htmlFor="username" className="text-sm font-medium text-gray-700">Username:</label>
+                    <input type="text" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
                 </div>
                 <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <label htmlFor="email" className="text-sm font-medium text-gray-700">Email:</label>
+                    <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
                 </div>
                 <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <label htmlFor="password" className="text-sm font-medium text-gray-700">Password:</label>
+                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" className="w-full py-2 px-4 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700">Register</button>
             </form>
         </div>
     )
