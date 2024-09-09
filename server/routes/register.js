@@ -11,14 +11,20 @@ router.post('/', async (req, res, next) => {
     const { username, email, password } = req.body
     try {
         const existingUser = await User.findOne({ $or: [{ username }, { email }] });
-        
         if (existingUser) {
             return res.status(400).json({ message: "Username or email already in use" });
         }
 
         const user = new User({ username, email, password });
         await user.save();
-        res.status(201).json(user);
+
+        req.session.user = {
+            userId: user._id,
+            username: user.username,
+            email: user.email
+        }
+
+        return res.status(200).redirect('/dashboard');
         
     } catch (err) {
         console.error(err);
