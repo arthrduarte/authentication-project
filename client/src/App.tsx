@@ -5,6 +5,7 @@ import Register from "./components/Register"
 import Home from "./components/Home"
 import Logout from "./components/Logout"
 import Dashboard from "./components/Dashboard"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
 
@@ -14,10 +15,10 @@ function App() {
         <Routes>
           <Route path="/">
             <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="logout" element={<Logout />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="login" element={<ProtectedRoute Component={Login} />} />
+            <Route path="register" element={<ProtectedRoute Component={Register} />} />
+            <Route path="logout" element={<ProtectedRoute Component={Logout} />} />
+            <Route path="dashboard" element={<ProtectedRoute Component={Dashboard} />} />
           </Route>
         </Routes>
       </BrowserRouter>

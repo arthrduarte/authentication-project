@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -20,10 +21,9 @@ export default function Login() {
 
         const data = await response.json();
         if (response.ok) {
-            console.log('Login successful:', data)
-            navigate('/dashboard')
+            navigate('/')
         } else {
-            console.error('Login failed:', data)
+            setErrorMessage(data.message)
         }
     }
 
@@ -31,6 +31,7 @@ export default function Login() {
         <>
             <a href="/">Go back</a>
             <h1 className='text-center font-bold text-[2rem]'>Login</h1>
+            <p className='text-center font-bold text-[1rem]'>{errorMessage}</p>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
