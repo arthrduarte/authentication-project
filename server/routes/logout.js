@@ -3,14 +3,13 @@ const router = express.Router();
 const { isAuthenticated } = require('../middlewares')
 
 router.post('/', (req, res) => {
-    console.log('Logout route hit');
     if (req.session.user) {
         req.session.destroy((err) => {
             if (err) {
                 return res.status(500).json({ message: 'Failed to log out' });
             }
             console.log('Session destroyed and cookies cleared');
-            res.clearCookie('session');  // Clear the session cookie
+            res.clearCookie('session'); 
             return res.status(200).json({ message: 'Logout successful' });
         });
     } else {

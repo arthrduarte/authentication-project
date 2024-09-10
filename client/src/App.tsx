@@ -6,6 +6,7 @@ import Home from "./components/Home"
 import Logout from "./components/Logout"
 import Dashboard from "./components/Dashboard"
 import ProtectedRoute from "./components/ProtectedRoute"
+import Delete from "./components/Delete"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="register" element={<ProtectedRoute Component={Register} />} />
             <Route path="logout" element={<ProtectedRoute Component={Logout} />} />
             <Route path="dashboard" element={<ProtectedRoute Component={Dashboard} />} />
+            <Route path="delete" element={<ProtectedRoute Component={Delete} />} />
           </Route>
         </Routes>
       </BrowserRouter>

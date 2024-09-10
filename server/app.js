@@ -11,6 +11,7 @@ const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const dashboardRouter = require('./routes/dashboard');
 const logoutRouter = require('./routes/logout')
+const deleteRouter = require('./routes/delete')
 
 const app = express();
 
@@ -39,5 +40,6 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/logout', logoutRouter);
+app.use('/delete', deleteRouter);
 
 module.exports = app;

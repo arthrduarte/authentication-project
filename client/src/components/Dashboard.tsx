@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Dashboard() {
   const userData = JSON.parse(localStorage.getItem("user") ?? '')
   console.log(userData)

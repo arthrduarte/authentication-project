@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Logout() {
-    const [result, setResult] = useState('Logging out...')
+export default function Delete() {
+    const [result, setResult] = useState('Deleting...')
     const navigate = useNavigate();
 
     useEffect(() => {
-        const handleLogout = async () => {
-            const response = await fetch('http://localhost:3000/logout', {
+        const handleDelete = async () => {
+            const response = await fetch('http://localhost:3000/delete', {
                 method: 'POST',
                 credentials: 'include',
             });
@@ -20,7 +20,7 @@ export default function Logout() {
             }
         };
 
-        handleLogout();
+        handleDelete();
     }, [])
     return (
         <>
