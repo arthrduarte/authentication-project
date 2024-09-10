@@ -32,7 +32,7 @@ export default function Register() {
     return (
         <div className='flex flex-col items-center rounded-lg bg-white shadow-2xl py-[3rem] px-[5rem]'>
             <a href="/" className='block text-blue-500 hover:text-blue-700'>Go back</a>
-            <h1 className='text-center font-bold text-2xl'>Register</h1>
+            <h1 className='text-center font-bold text-2xl'>🔑 Register</h1>
             <p className='text-center text-base my-3'>{errorMessage}</p>
             <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-xs">
                 <div>

@@ -5,7 +5,7 @@ export default function Dashboard() {
   return (
     <div className='flex flex-col items-center rounded-lg bg-white shadow-2xl py-[3rem] px-[5rem]'>
       <a href="/" className='block text-blue-500 hover:text-blue-700'>Go back</a>
-      <h1 className='text-center font-bold text-2xl'>Dashboard</h1>
+      <h1 className='text-center font-bold text-2xl'>🖥️ Dashboard</h1>
       <div className='text-center py-5'>
         <p className='text-lg font-semibold'>{userData.username}</p>
         <p className='text-gray-600'>{userData.email}</p>
