@@ -8,23 +8,34 @@ export default function Login() {
     const navigate = useNavigate()
 
     const handleSubmit = async (event: React.FormEvent) => {
+        console.log("Form submited")
         event.preventDefault();
 
-        const response = await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-            credentials: 'include'
-        });
+        try{
 
-        const data = await response.json();
-        if (response.ok) {
-            localStorage.setItem('user', JSON.stringify(data.user));
-            navigate('/')
-        } else {
-            setErrorMessage(data.message)
+            const response = await fetch(`https://authentication-project-server-ye0z.onrender.com/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+                credentials: 'include'
+            });
+            
+            console.log("Response status:", response.status);
+            const data = await response.json();
+            console.log("Data fetched:", data)
+            if (response.ok) {
+                console.log(data.user)
+                localStorage.setItem('user', JSON.stringify(data.user));
+                console.log("Set item on local storage and navigate to /")
+                navigate('/')
+            } else {
+                setErrorMessage(data.message)
+            }
+        } catch(error){
+            console.error("Error during login:", error);
+            setErrorMessage('An error occurred. Please try again.');
         }
     }
 

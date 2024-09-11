@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel')
+const bcrypt = require('bcryptjs')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -9,13 +10,14 @@ router.get('/', function (req, res, next) {
 
 router.post('/', async (req, res, next) => {
     const { username, email, password } = req.body
+    const hash = bcrypt.hashSync(password, 10);
     try {
         const existingUser = await User.findOne({ $or: [{ username }, { email }] });
         if (existingUser) {
             return res.status(400).json({ message: "Username or email already in use" });
         }
 
-        const user = new User({ username, email, password });
+        const user = new User({ username, email, password: hash });
         await user.save();
 
         req.session.user = {
@@ -24,7 +26,7 @@ router.post('/', async (req, res, next) => {
             email: user.email
         }
 
-        return res.status(200).redirect('/dashboard');
+        return res.status(200).json({ message: "Register successful:", user: req.session.user });
         
     } catch (err) {
         console.error(err);

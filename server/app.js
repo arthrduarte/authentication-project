@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session')
 const cors = require('cors')
+const MemoryStore = require('memorystore')(session)
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -23,14 +24,18 @@ app.use(session({
     secret: 'my_session_secret',
     resave: true,
     saveUninitialized: false,
-    name: 'session'
+    name: 'session',
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+    }),
 }))
 app.use((req, res, next) => {
     res.locals.user = req.session.user
     next()
 })
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://authentication-project-7mz7.onrender.com',
     credentials: true
 }))
 
