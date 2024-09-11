@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 export default function Delete() {
     const [result, setResult] = useState('Deleting...')
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         const handleDelete = async () => {
-            const response = await fetch('http://localhost:3000/delete', {
+            const response = await fetch(`https://authentication-project-server-ye0z.onrender.com/delete`, {
                 method: 'POST',
                 credentials: 'include',
             });

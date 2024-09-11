@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
             email: user.email
         }
 
-        return res.status(200).redirect('/dashboard');
+        return res.status(200).json({ message: "Register successful:", user: req.session.user });
         
     } catch (err) {
         console.error(err);

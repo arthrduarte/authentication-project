@@ -9,9 +9,10 @@ export default function Register() {
     const navigate = useNavigate()
 
     const handleSubmit = async (event: React.FormEvent) => {
+        console.log("Form submited")
         event.preventDefault();
 
-        const response = await fetch('http://localhost:3000/register', {
+        const response = await fetch(`https://authentication-project-server-ye0z.onrender.com/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,8 +22,11 @@ export default function Register() {
         });
 
         const data = await response.json();
-        if (response.ok) {
+
+        console.log("Data fetched")
+        if (data.ok) {
             localStorage.setItem('user', JSON.stringify(data.user));
+            console.log("Set item on local storage and navigate to /")
             navigate('/')
         } else {
             setErrorMessage(data.message)

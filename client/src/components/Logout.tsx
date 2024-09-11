@@ -7,7 +7,7 @@ export default function Logout() {
 
     useEffect(() => {
         const handleLogout = async () => {
-            const response = await fetch('http://localhost:3000/logout', {
+            const response = await fetch(`https://authentication-project-server-ye0z.onrender.com/logout`, {
                 method: 'POST',
                 credentials: 'include',
             });
