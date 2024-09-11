@@ -26,6 +26,7 @@ export default function Login() {
             const data = await response.json();
             console.log("Data fetched:", data)
             if (response.ok) {
+                console.log(data.user)
                 localStorage.setItem('user', JSON.stringify(data.user));
                 console.log("Set item on local storage and navigate to /")
                 navigate('/')

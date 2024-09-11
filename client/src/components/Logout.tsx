@@ -7,15 +7,21 @@ export default function Logout() {
 
     useEffect(() => {
         const handleLogout = async () => {
+            console.log("Trying to log out")
             const response = await fetch(`https://authentication-project-server-ye0z.onrender.com/logout`, {
                 method: 'POST',
                 credentials: 'include',
             });
             const result = await response.json();
+            
+            console.log("Data fetched:", result)
+
             if (response.ok) {
+                console.log("Removing local storage")
                 localStorage.removeItem('user');
                 navigate('/');
             } else {
+                console.log("Response had a problem:", result.message)
                 setResult(result.message)
             }
         };
