@@ -24,7 +24,7 @@ export default function Register() {
         const data = await response.json();
 
         console.log("Data fetched")
-        if (data.ok) {
+        if (response.ok) {
             localStorage.setItem('user', JSON.stringify(data.user));
             console.log("Set item on local storage and navigate to /")
             navigate('/')
