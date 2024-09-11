@@ -12,7 +12,7 @@ export default function Dashboard() {
       </div>
       <div>
         <a href="logout" className='bg-blue-500 text-center mx-1 font-semibold text-white py-2 px-4 rounded hover:bg-blue-700'>Logout</a>
-        <a href="delete" className='bg-red-500 text-center mx-1 font-semibold text-white py-2 px-4 rounded hover:bg-red-700'>Delete</a>
+        {/* <a href="delete" className='bg-red-500 text-center mx-1 font-semibold text-white py-2 px-4 rounded hover:bg-red-700'>Delete</a> */}
       </div>
     </div>
   )
